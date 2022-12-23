@@ -10,9 +10,11 @@ export default function Home({ blog }) {
             <Link href={`/blog/${blog.id}`}>
               {blog.title}
             </Link>
+            <div>{blog.category.name}</div>
           </li>
         ))}
       </ul>
+      
     </div>
   );
 }
