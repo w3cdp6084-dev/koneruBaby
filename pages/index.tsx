@@ -1,31 +1,10 @@
-import Link from "next/link";
-import { client } from "../libs/client";
+
+import Card from "../components/Card";
 
 export default function Home({ blog }) {
   return (
     <div>
-      <ul>
-        {blog.map((blog) => (
-          <li key={blog.id}>
-            <Link href={`/blog/${blog.id}`}>
-              {blog.title}
-            </Link>
-            <div>{blog.category.name}</div>
-          </li>
-        ))}
-      </ul>
-      
+      <Card blog={blog} />
     </div>
   );
 }
-
-
-export const getStaticProps = async () => {
-  const data = await client.get({ endpoint: "blog" });
-
-  return {
-    props: {
-      blog: data.contents,
-    },
-  };
-};
