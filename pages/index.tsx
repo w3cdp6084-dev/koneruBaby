@@ -5,18 +5,27 @@ import { client } from "../libs/client";
 export default function Home({ blog }) {
   return (
     <div>
-      <div className={styles.wrap}>
-        <ul className={styles.card}>
-          {blog.map((blog) => (
+      <main className={styles.main}>
+        <div className={styles.wrap}>
+          <ul className="columns-2 md:columns-3 lg:columns-4">
+            {blog.map((blog) => (
+          <Link href={`/blog/${blog.id}`}>
             <li key={blog.id}>
-              <Link href={`/blog/${blog.id}`}>
-                {blog.title}
-              </Link>
-              <div>{blog.category.name}</div>
+              <img
+                src={blog.eyecatch.url}
+                alt="Picture of the author"
+                width="100%"
+                height="100%"
+              />
+              {blog.title}
+              <div className="text-3xl">{blog.category.name}</div>
             </li>
-          ))}
-        </ul>
-      </div>
+          </Link>
+            ))}
+          </ul>
+          
+        </div>
+      </main>
     </div>
   );
 }
